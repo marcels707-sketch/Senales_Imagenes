@@ -185,6 +185,7 @@ def graficar_comparativa_completa(frecuencias, fft_original, ffts_dict, data_nor
 def fir_bandpass(fc1, fc2, fs, numtaps=201, window='hamming'):
     nyq = fs / 2
     return firwin(numtaps, [fc1/nyq, fc2/nyq], window=window, pass_zero=False)
+    
 
 # ---------------- KAISER ----------------
 def fir_bandpass_kaiser(fc1, fc2, fs, numtaps=301, beta=8.6):
@@ -224,7 +225,7 @@ def fir_minphase_bandpass(fc1, fc2, fs, numtaps=301):
     b = fir_bandpass(fc1, fc2, fs, numtaps=numtaps)
     return minimum_phase(b)
 
-# ----------- Respuesta arbitraria ------------
+# ----------- Personalizada ------------
 def fir_custom(freqs, gains, fs, numtaps=301):
     freqs_norm = np.array(freqs) / (fs/2)
     return firwin2(numtaps, freqs_norm, gains)
